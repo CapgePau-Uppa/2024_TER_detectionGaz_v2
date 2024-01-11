@@ -93,11 +93,12 @@ Our tutorial works for Windows OS.
 - Open your file explorer. Go in the C: folder.
 - Create a new folder (use the right click, then select New folder). Name the new folder data then go in it.
 - Create a new folder and name it db. You can close your file explorer.
+```diff
+! si je comprends bien il faut créer un dossier C:/data/db mais il sert à quoi ? c'est pas utilisé dans la config mongo.
+```
 - Open MongoDBCompass.
 - Click on New connection.
 - Click on Save & Connect. Name it Alert and choose the color you want.
-
- ! si je comprends bien il crée un dossier C:/data/db mais il sert à quoi ? c'est pas utilisé dans la config mongo
 
 #### Step 3: Run the server
 
@@ -106,7 +107,11 @@ Our tutorial works for Windows OS.
 - Using the ```cd``` command, go to the file where you downloaded the server code.
 - Type ```npm install```.
 - Run the server by typing ```node ./server.js```.
-- Open MongoDB Compass. Double click on the Alert in the Saved connections. 
+- Open MongoDB Compass. Double click on the Alert in the Saved connections.
+
+```diff
+! il faut faire attention, dans le server.js s'attend à trouver une db "arangarciaDB" avec une table "alertTable". De plus le port écouté doit correspondre au port utilisé par mongo. TODO peut être ajouter un script qui lance mongo + le serveur avec le nom qu'il veut
+```
 
 ## Download the app
 
