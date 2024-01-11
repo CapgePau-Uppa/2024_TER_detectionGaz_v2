@@ -92,7 +92,7 @@ Our tutorial works for Windows OS.
 - Once the installation is finished, check if it's insalled. The default directory is C:/Program Files/MongoDB/Server/bin. There should be the mongo.exe file.
 - Open your file explorer. Go in the C: folder.
 - Create a new folder (use the right click, then select New folder). Name the new folder data then go in it.
-- Create a new folder and name it db. You can close your file explorer. 
+- Create a new folder and name it db. You can close your file explorer. <span style="color:red">si je comprends bien il crée un dossier C:/data/db mais il sert à quoi ? c'est pas utilisé dans la config mongo]</span>
 - Open MongoDBCompass.
 - Click on New connection.
 - Click on Save & Connect. Name it Alert and choose the color you want.
