@@ -21,7 +21,7 @@ const addAlert = async (req, res) => {
         }
         const arangarciaDB = client.db('arangarciaDB');
         const collection = arangarciaDB.collection('alertTable');
-        let result = await collection.insertOne(newAlert)
+        let result = await collection.insertOne(newAlert);
 
         res.status(200).json(result);
     } catch(error){
@@ -55,6 +55,6 @@ router.route("/getAlert").post( getAlert );
 app.use("/arangarcia", router);
 
 
-app.listen(3000, () => {
-    console.log("listening on port 3000");
+app.listen(27017, () => {
+    console.log("listening on port 27017");
 })
