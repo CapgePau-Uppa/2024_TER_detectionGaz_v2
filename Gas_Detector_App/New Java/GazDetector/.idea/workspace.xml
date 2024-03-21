@@ -50,7 +50,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\PAUL\.android\avd\Pixel_6_API_34.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[adb-39251JEHN03447-ed8RTh._adb-tls-connect._tcp]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -76,6 +76,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
+    "android-custom-viewC:/Users/PAUL/AndroidStudioProjects/GazDetectorApplication2/app/src/main/java/com/example/gazdetectorapplication/util/CustomImageView.java_SELECTED": "CustomImageView",
     "android-custom-viewC:/Users/PAUL/AndroidStudioProjects/GazDetectorApplication2/app/src/main/java/com/example/gazdetectorapplication/util/DrawableImageView.java_SELECTED": "DrawableImageView",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
@@ -88,6 +89,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\PAUL\AndroidStudioProjects\GazDetectorApplication2\app\src\main\res\drawable" />
       <recent name="C:\Users\PAUL\AndroidStudioProjects\GazDetectorApplication2\app\src\main\res\raw" />
     </key>
   </component>

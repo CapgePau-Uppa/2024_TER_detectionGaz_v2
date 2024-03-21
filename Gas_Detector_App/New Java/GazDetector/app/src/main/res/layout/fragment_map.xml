@@ -4,17 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.map.MapFragment">
+    tools:context=".ui.map.MapFragment"
+    tools:ignore="UseSwitchCompatOrMaterialXml">
 
-    <ImageView
+    <com.example.gazdetectorapplication.util.CustomImageView
         android:id="@+id/image_map"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/text_map"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/title_map" />
+        app:layout_constraintTop_toBottomOf="@id/switchMap"
+        app:layout_constraintBottom_toTopOf="@+id/text_map"
+        android:contentDescription="@string/title_map"/>
 
     <TextView
         android:id="@+id/text_map"
@@ -25,9 +26,20 @@
         android:layout_marginEnd="8dp"
         android:textAlignment="center"
         android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/image_map"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_map"
         />
+
+    <Switch
+        android:id="@+id/switchMap"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/image_map"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="changeMap" />
 </androidx.constraintlayout.widget.ConstraintLayout>
