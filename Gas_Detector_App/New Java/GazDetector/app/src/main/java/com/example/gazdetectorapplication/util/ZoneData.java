@@ -7,14 +7,14 @@ public class ZoneData {
     private String zoneName;
     private ArrayList<String> zoneAdministrator;
     private ArrayList<String> zoneWorker;
-    private Coordinate imageSize;
+    private ArrayList<Floor> floors;
 
-    public ZoneData(String zoneId, String zoneName, ArrayList<String> zoneAdministrator, ArrayList<String> zoneWorker, Coordinate imageSize) {
+    public ZoneData(String zoneId, String zoneName, ArrayList<String> zoneAdministrator, ArrayList<String> zoneWorker, ArrayList<Floor> floors) {
         this.zoneId = zoneId;
         this.zoneName = zoneName;
         this.zoneAdministrator = zoneAdministrator;
         this.zoneWorker = zoneWorker;
-        this.imageSize = imageSize;
+        this.floors = floors;
     }
 
     public String getZoneId() {
@@ -33,8 +33,8 @@ public class ZoneData {
         return zoneWorker;
     }
 
-    public Coordinate getImageSize() {
-        return imageSize;
+    public ArrayList<Floor> getFloors() {
+        return floors;
     }
 
 }
