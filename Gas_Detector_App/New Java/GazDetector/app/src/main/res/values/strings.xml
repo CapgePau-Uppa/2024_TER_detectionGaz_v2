@@ -1,6 +1,0 @@
-<resources>
-    <string name="app_name">GazDetectorApplication</string>
-    <string name="title_plug_in">Plugin</string>
-    <string name="title_map">Map</string>
-    <string name="title_user">User</string>
-</resources>
