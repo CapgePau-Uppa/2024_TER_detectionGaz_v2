@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">Gaz Detector</string>
-    <string name="title_captor">Captor</string>
+    <string name="app_name">GazDetectorApplication</string>
+    <string name="title_plug_in">Plugin</string>
     <string name="title_map">Map</string>
     <string name="title_user">User</string>
 </resources>

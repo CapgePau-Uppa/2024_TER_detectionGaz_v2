@@ -1,46 +1,49 @@
 package com.example.gazdetectorapplication;
 
 import android.os.Bundle;
+import android.view.Window;
+
+import com.example.gazdetectorapplication.ui.map.MapFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 
 import com.example.gazdetectorapplication.databinding.ActivityMainBinding;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.StringWriter;
+import java.io.Writer;
+import java.nio.charset.StandardCharsets;
+
 public class MainActivity extends AppCompatActivity {
-    ActivityMainBinding binding;
+
+    private ActivityMainBinding binding;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        getSupportActionBar().hide();
         setContentView(binding.getRoot());
-        replaceFragment(new PlugInFragment());
-
-        binding.navView.setOnItemSelectedListener(item -> {
-            switch(item.getItemId()){
-                case 1000001:
-                    replaceFragment(new PlugInFragment());
-                    break;
-                case 1000003:
-                    replaceFragment(new MapFragment());
-                    break;
-                case 1000006:
-                    replaceFragment(new UserFragment());
-                    break;
-            }
-            return true;
-        });
-    }
-
-    private void replaceFragment(Fragment fragment){
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction ft = fm.beginTransaction();
-        ft.replace(R.id.frame_layout,fragment);
-        ft.commit();
+        BottomNavigationView navView = findViewById(R.id.nav_view);
+        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.navigation_plug_in, R.id.navigation_map, R.id.navigation_user)
+                .build();
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+        NavigationUI.setupWithNavController(binding.navView, navController);
 
     }
+
+
 
 }

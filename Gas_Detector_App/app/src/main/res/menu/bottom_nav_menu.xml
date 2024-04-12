@@ -4,7 +4,7 @@
     <item
         android:id="@+id/navigation_plug_in"
         android:icon="@drawable/ic_plug_in"
-        android:title="@string/title_captor" />
+        android:title="@string/title_plug_in" />
 
     <item
         android:id="@+id/navigation_map"

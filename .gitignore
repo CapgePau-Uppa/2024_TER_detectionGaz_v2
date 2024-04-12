@@ -1,0 +1,10 @@
+*.iml
+.gradle
+Gas_Detector_App/local.properties
+Gas_Detector_App/.idea/
+Gas_Detector_App/.DS_Store
+Gas_Detector_App/build
+Gas_Detector_App/captures
+Gas_Detector_App/.externalNativeBuild
+Gas_Detector_App/.cxx
+Gas_Detector_App/local.properties
