@@ -45,7 +45,7 @@ public class NavigationActivity extends AppCompatActivity {
 
     private ActivityNavigationBinding binding;
 
-    static String urlCheckAlert = "http://192.168.1.85:3000/checkCurrentAlert";
+    static String urlCheckAlert = "http://192.168.43.172:3000/checkCurrentAlert";
     static boolean alertOccuring = false;
     MapFragment mapFragment = new MapFragment();
     PlugInFragment plugInFragment = new PlugInFragment();
@@ -85,11 +85,13 @@ public class NavigationActivity extends AppCompatActivity {
             return false;
         });
 
-
     }
 
 
 
+
+
+    //Appelée à chaque clique sur la navBar
     public static void checkAlert() {
         OkHttpClient client = new OkHttpClient();
         RequestBody formBody = new FormBody.Builder()

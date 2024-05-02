@@ -43,7 +43,7 @@ import okhttp3.Response;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
-    String url = "http://192.168.1.85:3000/getPerson";
+    String url = "http://192.168.43.172:3000/getPerson";
     String port = ":3000";
     private static Account currentAccount;
 

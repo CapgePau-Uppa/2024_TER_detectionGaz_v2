@@ -36,7 +36,7 @@ public class PlugInFragment extends Fragment {
 
     private FragmentPlugInBinding binding;
     Handler taskHandler = new Handler();
-    String url = "http://192.168.1.85:3000/addAlert";
+    String url = "http://192.168.43.172:3000/addAlert";
     LineDataSet ld1, ld2, ld3;
     ArrayList<ILineDataSet> datasets = new ArrayList<ILineDataSet>();
     float num = 0;

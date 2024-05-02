@@ -29,6 +29,7 @@ const checkCurrentAlert = async(req, res) =>{
 }
 
 const getPerson = async (req, res) => {
+    console.log(req);
     try{
         const person = {
             surname: req.body.surname,
@@ -75,7 +76,7 @@ const addPerson = async(req, res) =>{
 const getAlert = async (req, res) => {
     try{
         const db = client.db('GazDetector');
-        const collection = db.collection('Alert');
+        const collection = db.collection('Alerte');
         let cursor = await collection.find()
         let result = await cursor.toArray();
         if(result.length>0){

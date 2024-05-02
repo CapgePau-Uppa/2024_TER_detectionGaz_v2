@@ -41,11 +41,11 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class MapFragment extends Fragment {
-    private String urlFinishAlert = "http://192.168.1.85:3000/finishAlert";
-    private String urlSendFPerson = "http://192.168.1.85:3000/sendFPerson";
-    private String urlSendObstacle = "http://192.168.1.85:3000/sendObstacle";
-    private String urlGetObstacles = "http://192.168.1.85:3000/getObstacles";
-    private String urlGetFPersons = "http://192.168.1.85:3000/getFPersons";
+    private String urlFinishAlert = "http://192.168.43.172:3000/finishAlert";
+    private String urlSendFPerson = "http://192.168.43.172:3000/sendFPerson";
+    private String urlSendObstacle = "http://192.168.43.172:3000/sendObstacle";
+    private String urlGetObstacles = "http://192.168.43.172:3000/getObstacles";
+    private String urlGetFPersons = "http://192.168.43.172:3000/getFPersons";
 
 
     private FragmentMapBinding binding;
@@ -389,10 +389,51 @@ public class MapFragment extends Fragment {
             r.setNearestRooms(nearestRooms);
         }
         zoneData.getFloors().get(currentFloor).setPMRRoom(PMRRooms);
-        getServerDatas();
+        getServerFPerson();
+        getServerObstacle();
     }
 
-    private void getServerDatas() {
+    private void getServerObstacle(){
+        OkHttpClient client = new OkHttpClient();
+        RequestBody formBody = new FormBody.Builder()
+                .add("zoneId", NavigationActivity.getCurrentAccount().getZoneId())
+                .build();
+        Request request = new Request.Builder()
+                .url(urlGetObstacles)
+                .post(formBody)
+                .build();
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {  }
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if(response.code()==200){
+                    JSONObject obj = null;
+                    try {
+                        obj = new JSONObject(response.body().string());
+                        JSONArray arr = obj.getJSONArray("array");
+                        for(int i = 0; i<arr.length();i++){
+                            JSONObject o = (JSONObject) arr.get(i);
+                            int floor = o.getInt("floor");
+                            int roomId = o.getInt("roomId");
+                            int obstacleLevel = o.getInt("obstacleLevel");
+                            for(Room r : zoneData.getFloors().get(floor).getRooms()){
+                                if(r.getId()==roomId){
+                                    r.setObstacleLevel(obstacleLevel);
+                                }
+                            }
+                        }
+
+                    } catch (JSONException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
+
+        });
+    }
+
+    private void getServerFPerson() {
         OkHttpClient client = new OkHttpClient();
         RequestBody formBody = new FormBody.Builder()
                 .add("zoneId", NavigationActivity.getCurrentAccount().getZoneId())
@@ -408,7 +449,6 @@ public class MapFragment extends Fragment {
             public void onResponse(Call call, Response response) throws IOException {
                 if(response.code()==200){
                     JSONObject obj = null;
-                    ArrayList<String> idRooms = new ArrayList<>();
                     try {
                         obj = new JSONObject(response.body().string());
                         JSONArray arr = obj.getJSONArray("array");
