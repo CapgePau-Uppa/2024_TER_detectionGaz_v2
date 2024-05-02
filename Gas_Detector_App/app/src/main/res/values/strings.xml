@@ -3,4 +3,7 @@
     <string name="title_plug_in">Plugin</string>
     <string name="title_map">Map</string>
     <string name="title_user">User</string>
+    <string name="placeHolderPassword">Mot de passe</string>
+    <string name="placeHolderUsername">Identifiant</string>
+    <string name="connexionUserText">Connexion</string>
 </resources>

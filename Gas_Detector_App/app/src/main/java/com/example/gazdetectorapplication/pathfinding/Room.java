@@ -12,8 +12,10 @@ public class Room {
     private HashMap<Room, Integer> nearestRooms;
     private ArrayList<Pair> end;
     private int obstacleLevel;
+    private boolean isPMRRoom;
+    private boolean hasFaintedPerson;
 
-    public Room(int id, Pair c0, Pair c1, ArrayList<Pair> end, HashMap<Integer, Pair> doors, HashMap<Room, Integer> nearestRooms){
+    public Room(int id, Pair c0, Pair c1, ArrayList<Pair> end, HashMap<Integer, Pair> doors, HashMap<Room, Integer> nearestRooms, boolean isPMRRoom){
         this.id = id;
         this.c0 = c0;
         this.c1 = c1;
@@ -21,7 +23,10 @@ public class Room {
         this.doors = doors;
         this.nearestRooms = nearestRooms;
         this.obstacleLevel = 0;
+        this.isPMRRoom = isPMRRoom;
+        this.hasFaintedPerson=false;
     }
+
 
     public int getId() {
         return id;
@@ -48,6 +53,9 @@ public class Room {
     }
     public int getObstacleLevel() {return obstacleLevel;}
 
+    public boolean isPMRRoom(){return this.isPMRRoom;}
+    public boolean hasFaintedPerson(){return this.hasFaintedPerson;}
+
 
     @Override
     public String toString() {
@@ -63,6 +71,10 @@ public class Room {
 
     public void setObstacleLevel(int level){
         this.obstacleLevel = level;
+    }
+
+    public void setFaintedPerson(boolean b){
+        this.hasFaintedPerson = b;
     }
 
 

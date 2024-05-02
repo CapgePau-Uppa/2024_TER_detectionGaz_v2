@@ -9,15 +9,18 @@ public class Floor {
     private ArrayList<Integer> HPEnd;
     private ArrayList<Integer> MPEnd;
     private ArrayList<Integer> LPEnd;
+    private ArrayList<Integer> PMRRoom;
     private ArrayList<Pair> fireDoors;
 
-    public Floor(ArrayList<Room> rooms, String mapName, Pair imageSize, ArrayList<Integer> HPEnd, ArrayList<Integer> MPEnd, ArrayList<Integer> LPEnd, ArrayList<Pair> fireDoors) {
+
+    public Floor(ArrayList<Room> rooms, String mapName, Pair imageSize, ArrayList<Integer> HPEnd, ArrayList<Integer> MPEnd, ArrayList<Integer> LPEnd, ArrayList<Pair> fireDoors, ArrayList<Integer> PMRRoom) {
         this.rooms = rooms;
         this.mapName = mapName;
         this.imageSize = imageSize;
         this.HPEnd = HPEnd;
         this.MPEnd = MPEnd;
         this.LPEnd = LPEnd;
+        this.PMRRoom = PMRRoom;
         this.fireDoors = fireDoors;
     }
 
@@ -47,6 +50,12 @@ public class Floor {
 
     public ArrayList<Pair> getFireDoors() {
         return fireDoors;
+    }
+
+    public ArrayList<Integer> getPMRRoom(){return this.PMRRoom;}
+
+    public void setPMRRoom(ArrayList<Integer> pmrRoom){
+        this.PMRRoom = pmrRoom;
     }
 
 }

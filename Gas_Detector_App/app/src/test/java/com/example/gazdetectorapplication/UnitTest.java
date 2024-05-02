@@ -279,7 +279,7 @@ public class UnitTest {
             hPEnd.add(4);
         }
         Floor f = new Floor(getRoomsForTU(version),"testUnitMap",new Pair(150,150),
-                hPEnd,mPEnd,lPEnd,fireDoor);
+                hPEnd,mPEnd,lPEnd,fireDoor, new ArrayList<Integer>());
         floors.add(f);
         ZoneData zoneData = new ZoneData("0000","zoneUnit",new ArrayList<String>(),new ArrayList<String>(),floors);
         return zoneData;
@@ -316,11 +316,11 @@ public class UnitTest {
         if(roomsVersion>5){
             endR4.add(new Pair(50,150));
         }
-        Room r0 = new Room(0,new Pair(0,0),new Pair(75,50),new ArrayList<>(),doorsR0,new HashMap<Room, Integer>());
-        Room r1 = new Room(1,new Pair(75,0),new Pair(100,50),endR1,doorsR1,new HashMap<Room, Integer>());
-        Room r2 = new Room(2,new Pair(100,0),new Pair(150,150),new ArrayList<>(),doorsR2,new HashMap<Room, Integer>());
-        Room r3 = new Room(3,new Pair(0,50),new Pair(100,100),endR3,doorsR3,new HashMap<Room, Integer>());
-        Room r4 = new Room(4,new Pair(0,100),new Pair(100,150),endR4,doorsR4,new HashMap<Room, Integer>());
+        Room r0 = new Room(0,new Pair(0,0),new Pair(75,50),new ArrayList<>(),doorsR0,new HashMap<Room, Integer>(), false);
+        Room r1 = new Room(1,new Pair(75,0),new Pair(100,50),endR1,doorsR1,new HashMap<Room, Integer>(), false);
+        Room r2 = new Room(2,new Pair(100,0),new Pair(150,150),new ArrayList<>(),doorsR2,new HashMap<Room, Integer>(), false);
+        Room r3 = new Room(3,new Pair(0,50),new Pair(100,100),endR3,doorsR3,new HashMap<Room, Integer>(), false);
+        Room r4 = new Room(4,new Pair(0,100),new Pair(100,150),endR4,doorsR4,new HashMap<Room, Integer>(), false);
         HashMap<Room,Integer> nearestRoomsR0 = new HashMap<>();
         nearestRoomsR0.put(r3,51);
         if(roomsVersion>0){

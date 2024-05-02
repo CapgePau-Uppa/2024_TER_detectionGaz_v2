@@ -1,4 +1,4 @@
-package com.example.gazdetectorapplication.jsongestion;
+package com.example.gazdetectorapplication.datamanagement;
 
 import android.content.res.Resources;
 
@@ -19,7 +19,6 @@ import java.io.Reader;
 import java.io.StringWriter;
 import java.io.Writer;
 import java.nio.charset.StandardCharsets;
-import java.time.format.ResolverStyle;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -102,7 +101,7 @@ public class JsonExtractor {
 
                 }
 
-                floors.add(new Floor(rooms,imageName,imageSize,HPEnd,MPEnd,LPEnd,fireDoors));
+                floors.add(new Floor(rooms,imageName,imageSize,HPEnd,MPEnd,LPEnd,fireDoors,new ArrayList<Integer>()));
             }
         }
         return floors;
@@ -116,6 +115,7 @@ public class JsonExtractor {
             if ( rooms.get(key) instanceof JSONObject ) {
                 int x = (int) ((JSONObject) rooms.get(key)).getJSONArray("xy1").get(0);
                 int y = (int) ((JSONObject) rooms.get(key)).getJSONArray("xy1").get(1);
+                boolean isPMRRoom = ((JSONObject) rooms.get(key)).getBoolean("isPMRRoom");
                 Pair c0 = new Pair(x,y);
                 x = (int) ((JSONObject) rooms.get(key)).getJSONArray("xy2").get(0);
                 y = (int) ((JSONObject) rooms.get(key)).getJSONArray("xy2").get(1);
@@ -142,7 +142,7 @@ public class JsonExtractor {
                         end.add(c);
                     }
                 }
-                Room r = new Room(Integer.parseInt(key),c0,c1,end,doors, new HashMap<Room, Integer>());
+                Room r = new Room(Integer.parseInt(key),c0,c1,end,doors, new HashMap<Room, Integer>(), isPMRRoom);
                 toReturn.add(r);
             }
         }

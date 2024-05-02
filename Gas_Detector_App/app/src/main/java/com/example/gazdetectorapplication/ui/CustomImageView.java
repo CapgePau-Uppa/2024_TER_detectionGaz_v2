@@ -6,11 +6,13 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.gazdetectorapplication.R;
 import com.example.gazdetectorapplication.pathfinding.Pair;
 import com.example.gazdetectorapplication.pathfinding.Room;
 
@@ -57,11 +59,15 @@ public class CustomImageView extends androidx.appcompat.widget.AppCompatImageVie
                 c.drawCircle(middle.getX()*ratioCoordinate,middle.getY()*ratioCoordinate,30,linePaint);
             }
             if(i==path.size()-1){
-                //si c'est la dernière salle
-                c.drawLine(middle.getX()*ratioCoordinate, middle.getY()*ratioCoordinate,
-                        path.get(i).getEnd().get(0).getX()*ratioCoordinate,
-                        path.get(i).getEnd().get(0).getY()*ratioCoordinate,linePaint);
-                c.drawCircle(path.get(i).getEnd().get(0).getX()*ratioCoordinate,path.get(i).getEnd().get(0).getY()*ratioCoordinate,30,linePaint);
+                if(path.get(i).getEnd().size()>0){
+                    c.drawLine(middle.getX()*ratioCoordinate, middle.getY()*ratioCoordinate,
+                            path.get(i).getEnd().get(0).getX()*ratioCoordinate,
+                            path.get(i).getEnd().get(0).getY()*ratioCoordinate,linePaint);
+                    c.drawCircle(path.get(i).getEnd().get(0).getX()*ratioCoordinate,path.get(i).getEnd().get(0).getY()*ratioCoordinate,30,linePaint);
+                }else{
+                    c.drawCircle(middle.getX()*ratioCoordinate,middle.getY()*ratioCoordinate,30,linePaint);
+                }
+
             }else{//sinon
                 HashMap<Integer, Pair> rooms = path.get(i).getDoors();
                 Pair c2=null;
@@ -95,11 +101,20 @@ public class CustomImageView extends androidx.appcompat.widget.AppCompatImageVie
                 c.drawRect(r.getC0().getX()*ratioCoordinate,r.getC0().getY()*ratioCoordinate,
                         r.getC1().getX()*ratioCoordinate,r.getC1().getY()*ratioCoordinate,linePaint);
             }
+            if(r.hasFaintedPerson()){
+                linePaint.setColor(Color.BLACK);
+                linePaint.setStrokeWidth(10);
+                Drawable icon = getResources().getDrawable(R.drawable.ic_faint);
+                icon.setBounds((int) (r.getC0().getX()*ratioCoordinate), (int) (r.getC0().getY()*ratioCoordinate),
+                        (int) (r.getC1().getX()*ratioCoordinate), (int) (r.getC1().getY()*ratioCoordinate));
+                icon.draw(c);
+//
+            }
         }
         this.setImageDrawable(new BitmapDrawable(getResources(),b));
     }
 
-    public void drawAlert(ArrayList<Room> roomsObstacle, float ratioCoordinate, int imageId){
+    public void drawAlert(ArrayList<Room> roomsObstacle, float ratioCoordinate, int imageId, boolean colorBlind){
         setImageResource(imageId);
         Bitmap b =  Bitmap.createBitmap(
                 this.getDrawable().getIntrinsicWidth(),
@@ -108,23 +123,43 @@ public class CustomImageView extends androidx.appcompat.widget.AppCompatImageVie
         Canvas c = new Canvas(b);
         c.save();
         c.drawBitmap(((BitmapDrawable)this.getDrawable()).getBitmap(),0,0,null);
+
         for(Room r : roomsObstacle){
             if(r.getObstacleLevel()>0){
                 switch(r.getObstacleLevel()){
                     case 1:
-                        linePaint.setColor(Color.YELLOW);
+                        if(colorBlind){
+                            linePaint.setColor(Color.rgb(109,182,255));
+                        }else{
+                            linePaint.setColor(Color.YELLOW);
+                        }
                         break;
                     case 2:
-                        linePaint.setColor(Color.rgb(255, 165, 0));
+                        if(colorBlind){
+                            linePaint.setColor(Color.rgb(0, 109, 219));
+                        }else{
+                            linePaint.setColor(Color.rgb(255,165,0));
+                        }
                         break;
                     default:
-                        linePaint.setColor(Color.RED);
+                        if(colorBlind){
+                            linePaint.setColor(Color.rgb(0,73,73));
+                        }else{
+                            linePaint.setColor(Color.RED);
+                        }
                         break;
                 }
                 linePaint.setAlpha(100);
                 linePaint.setStyle(Paint.Style.FILL);
                 c.drawRect(r.getC0().getX()*ratioCoordinate,r.getC0().getY()*ratioCoordinate,
                         r.getC1().getX()*ratioCoordinate,r.getC1().getY()*ratioCoordinate,linePaint);
+            }
+            if(r.hasFaintedPerson()){
+                linePaint.setStrokeWidth(10);
+                Drawable icon = getResources().getDrawable(R.drawable.ic_faint);
+                icon.setBounds((int) (r.getC0().getX()*ratioCoordinate), (int) (r.getC0().getY()*ratioCoordinate),
+                        (int) (r.getC1().getX()*ratioCoordinate), (int) (r.getC1().getY()*ratioCoordinate));
+                icon.draw(c);
             }
         }
         this.setImageDrawable(new BitmapDrawable(getResources(),b));

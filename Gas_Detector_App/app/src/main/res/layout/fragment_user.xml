@@ -4,33 +4,140 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.user.UserFragment">
+    tools:context=".ui.user.UserFragment"
+    android:id="@+id/userContainer">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/userHeader"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/userFragmentTitle"
+        android:text="Informations personnelles"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginTop="15dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        app:layout_constraintTop_toBottomOf="@id/userHeader"
+        app:layout_constraintStart_toStartOf="parent">
+    </TextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/surnameText"
+        android:text="Nom : XXXXX"
+        android:textSize="16sp"
+        android:layout_marginTop="40dp"
+        android:paddingStart="25dp"
+        android:paddingEnd="15dp"
+        app:layout_constraintTop_toBottomOf="@+id/userFragmentTitle"
+        app:layout_constraintStart_toStartOf="parent">
+    </TextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/nameText"
+        android:text="Prénom : XXXXX"
+        android:textSize="16sp"
+        android:layout_marginTop="20dp"
+        android:paddingStart="25dp"
+        android:paddingEnd="15dp"
+        app:layout_constraintTop_toBottomOf="@+id/surnameText"
+        app:layout_constraintStart_toStartOf="parent">
+    </TextView>
 
     <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="729dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/userLayoutPMR"
+        app:layout_constraintTop_toBottomOf="@id/nameText"
+        app:layout_constraintStart_toStartOf="parent"
         android:orientation="horizontal"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
+        android:layout_marginTop="20dp">
 
         <TextView
-            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Mode Daltonisme" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip"
+            android:id="@+id/PMRText"
+            android:text="Personne à mobilité réduite : "
+            android:textSize="16sp"
+            android:paddingStart="25dp"
+            app:layout_constraintTop_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+        </TextView>
+        <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
+            app:layout_constraintTop_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/userPMRCheckbox"/>
 
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/userLayoutCB"
+        app:layout_constraintTop_toBottomOf="@id/userLayoutPMR"
+        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/CBText"
+            android:text="Mode daltonisme : "
+            android:textSize="16sp"
+            android:paddingStart="25dp"
+            app:layout_constraintTop_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+        </TextView>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/userCBCheckbox"/>
+
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/feedbackSaveDatas"
+        android:text="Changements effectués"
+        android:textSize="16sp"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@id/userButtonSaveDatas"
+        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="invisible"
+        android:layout_marginBottom="15dp">
+    </TextView>
+
+    <Button
+        android:id="@+id/userButtonSaveDatas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:visibility="invisible"
+        android:paddingHorizontal="30dp"
+        android:text="Valider"
+        android:layout_marginBottom="20dp"
+        android:textSize="16sp"
+        />
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
